@@ -14,7 +14,7 @@ public class HelloResource {
 
     @GET
     @Produces("text/plain") // default: */*
-    public String helloWorld(@CookieParam(value="hellofrom") String from) {
+    public String hello(@CookieParam(value="hellofrom") String from) {
         return "Hello, " + from+"!";
     }
 }
