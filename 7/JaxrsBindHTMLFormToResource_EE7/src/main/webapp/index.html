@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Order Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            body {
+                margin: 2em 5em;
+                font-family:Georgia, "Times New Roman", Times, serif;
+            }
+            h1, legend {
+                font-family:Arial, Helvetica, sans-serif;
+            }
+            label, input, select {
+                display:block;
+            }
+            input, select {
+                margin-bottom: 1em;
+            }
+            fieldset {
+                margin-bottom: 2em;
+                padding: 1em;
+            }
+            fieldset fieldset {
+                margin-top: 1em;
+                margin-bottom: 1em;
+            }
+            input[type="checkbox"] {
+                display:inline;
+            }
+            .range {
+                margin-bottom:1em;
+            }	
+            .card-type input, .card-type label {
+                display:inline-block;
+            }
+        </style>	
+
+    </head>
+    <body>
+        <form id="addId" method="post" action="resources/user/order">
+            <fieldset> 
+                <legend>Personal details</legend> 
+                <div> 
+                    <label>First Name
+                        <input id="name" name="name" type="text" placeholder="First name only" required autofocus> 
+                    </label>
+                </div>
+                <div> 
+                    <label>Security code 
+                        <input id="security" name="security" type="number" required title="The last three digits on the back of your card.">
+                    </label> 
+                </div>
+                <div> 
+                    <label>Country 
+                        <input id="country" name="country" list="country-names" type="text" required> 
+                        <datalist id="country-names"> 
+                            <option label="England" value="England"></option> 
+                            <option label="Northern Ireland" value="Northern Ireland"></option> 
+                            <option label="Ireland" value="Ireland"></option> 
+                            <option label="Scotland" value="Scotland"></option> 
+                            <option label="Wales" value="Wales"></option> 
+                        </datalist>
+                    </label> 
+                </div> 
+                <fieldset>
+                    <legend>Card type</legend> 
+                    <div class="card">                     
+                        <input id="visa" name="card" value="VISA" type="radio"> 
+                        <label for="visa">VISA</label> 
+                        <input id="mastercard" name="card" value="Mastercard" type="radio">
+                        <label for="mastercard">Mastercard</label> 
+                        <input id="amex" name="card" value="AMEX" type="radio"> 
+                        <label for="amex">AMEX</label>
+                    </div> 
+                </fieldset> 
+                <fieldset>
+                    <legend>Subscribe for</legend> 
+                    <div class="order">                     
+                        <input id="newsletter" name="order" value="Newsletter" type="checkbox"> 
+                        <label for="newsletter">Newsletter</label> 
+                        <input id="news" name="order" value="News" type="checkbox">
+                        <label for="news">News</label> 
+                        <input id="promotions" name="order" value="Promotions" type="checkbox"> 
+                        <label for="promotions">Promotions</label>
+                    </div> 
+                </fieldset> 
+            </fieldset> 
+            <fieldset> 
+                <div> 
+                    <button type=submit>Place Order</button> 
+                </div> 
+            </fieldset> 
+        </form> 
+
+    </body>
+</html>
