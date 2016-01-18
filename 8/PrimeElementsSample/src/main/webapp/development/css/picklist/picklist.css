@@ -1,0 +1,40 @@
+.pui-picklist>div{float:left;}
+.pui-picklist .pui-picklist-buttons{height:200px;padding:0 5px;}
+.pui-picklist .pui-picklist-list{list-style-type:none;margin:0;padding:0;overflow:auto;height:200px;width:200px;}
+.pui-picklist .pui-picklist-list li{margin:1px;padding:2px;}
+.pui-picklist .pui-button{display:block;margin-bottom:.3em;}
+.pui-picklist .pui-button-text-icon-left{width:100%;}
+.pui-picklist .pui-picklist-item{cursor:pointer;border:0 none;font-weight:inherit;}
+.pui-picklist .pui-picklist-caption{text-align:center;padding:4px 0;border-bottom:0 none;}
+.pui-picklist table{width:100%;border-collapse:collapse;}
+.pui-picklist .pui-picklist-filter{padding-right:15px;width:100%;box-sizing:border-box;}
+.pui-picklist .pui-picklist-filter-container{position:relative;margin:0;padding:0;}
+.pui-picklist .pui-picklist-filter-container .pui-icon{position:absolute;top:5px;right:2px;}
+.pui-picklist{display:table;}
+.pui-picklist>div{float:none;display:table-cell;vertical-align:top;}
+.pui-picklist .pui-picklist-buttons{vertical-align:middle;}
+.pui-picklist.pui-picklist-vertical{display:table;}
+.pui-picklist.pui-picklist-vertical>div{float:none;display:table-row;vertical-align:top;}
+.pui-picklist.pui-picklist-vertical .pui-picklist-buttons{text-align:center;height:auto;}
+.pui-picklist.pui-picklist-vertical .pui-picklist-buttons .pui-button{display:inline-block;}
+.pui-picklist.pui-picklist-vertical .pui-button{margin-top:.3em;}
+.pui-picklist-outline{outline:1px dotted black;z-index:1;}
+.pui-picklist-list.pui-picklist-source,.pui-picklist-list.pui-picklist-target{outline:none;}
+.pui-picklist.pui-picklist-responsive *{box-sizing:border-box;}
+.pui-picklist.pui-picklist-responsive{width:100%;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-list-wrapper{width:35%;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons{width:10%;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons button{width:100%;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-list{width:auto;}
+.pui-picklist.pui-picklist-responsive .ui-chkbox-box{width:18px;height:18px;}
+@media(max-width:640px){.pui-picklist.pui-picklist-responsive{display:block;}
+.pui-picklist.pui-picklist-responsive>div{display:block;width:100%!important;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons{text-align:center;height:auto;padding:5px 0;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons button{display:inline;width:20%;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-source-controls.pui-picklist-buttons{padding-bottom:5px;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-target-controls.pui-picklist-buttons{padding-top:5px;}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons .fa-angle-right:before{content:"\f107";}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons .fa-angle-double-right:before{content:"\f103";}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons .fa-angle-left:before{content:"\f106";}
+.pui-picklist.pui-picklist-responsive .pui-picklist-buttons .fa-angle-double-left:before{content:"\f102";}
+}

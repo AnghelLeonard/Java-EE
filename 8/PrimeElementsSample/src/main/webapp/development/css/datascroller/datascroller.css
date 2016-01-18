@@ -1,0 +1,7 @@
+.pui-datascroller .pui-datascroller-header{text-align:center;padding:4px 10px;border-bottom:0 none;}
+.pui-datascroller .pui-datascroller-content{padding:4px 10px;}
+.pui-datascroller-inline .pui-datascroller-content{overflow:auto;}
+.pui-datascroller .pui-datascroller-list{list-style-type:none;margin:0;padding:0;}
+.pui-datascroller .pui-datascroller-item{border:0 none;}
+.pui-datascroller .pui-datascroller-loader{text-align:center;padding:4px 10px;}
+.pui-datascroller .pui-datascroller-loading{background:url("./images/loadingbar.gif") center center no-repeat;width:220px;height:19px;padding:0;margin:0;display:inline-block;}

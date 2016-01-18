@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>        
+        <script type="text/javascript" src="development/x-tag-core.min.js"></script>
+        <script type="text/javascript" src="development/primeui-3.0.0-min.js"></script>
+        <script type="text/javascript" src="development/primeelements-3.0.0.js"></script>
+
+        <link type="text/css" href="development/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>        
+        <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+        <link type="text/css" href="development/primeui-3.0.0-min.css" rel="stylesheet">
+        <link type="text/css" href="development/themes/cruze/theme.css" rel="stylesheet"/>
+        <style type="text/css">
+            .ui-widget {
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 12px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 400;
+                line-height: 20px;                
+            }
+            .ui-widget-content {
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="pui-grid pui-grid-responsive">
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-4">
+                    <form method="post" action="resources/register">            
+                        <p-fieldset toggleable style="color:red;">
+                            <legend>Personal details</legend>   
+
+                            <div class="pui-grid pui-grid-responsive">
+                                <div class="pui-grid-row">
+                                    <div class="pui-grid-col-4">First Name:</div>
+                                    <div class="pui-grid-col-4">
+                                        <input id="name" name="name" type="text" is="p-inputtext" size="20" placeholder="First name only" required autofocus />                                    
+                                    </div> 
+                                </div>
+                                <div class="pui-grid-row">
+                                    <div class="pui-grid-col-4">Password:</div>
+                                    <div class="pui-grid-col-4">
+                                        <input id="security" name="security" type="password" is="p-password" size="20" placeholder="Provide your security code" required/>                                        
+                                    </div>
+                                </div>               
+                                <div class="pui-grid-row">
+                                    <div class="pui-grid-col-4">Country:</div>                    
+                                    <div class="pui-grid-col-4">
+                                        <p-dropdown id="country" name="country" effect="fade" filter>
+                                            <option value="England">England</option>
+                                            <option value="Northern Ireland">Northern Ireland</option>
+                                            <option value="Ireland">Ireland</option>
+                                            <option value="Scotland">Scotland</option>
+                                            <option value="Wales">Wales</option>
+                                        </p-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset toggleable>
+                            <legend>Card type</legend>
+                            <div class="pui-grid pui-grid-responsive">
+                                <div class="pui-grid-row">                            
+                                    <div class="pui-grid-col-1"><input id="visa" name="card" type="radio" value="Visa" is="p-radiobutton"/></div>
+                                    <div class="pui-grid-col-11"><label for="visa" class="ui-widget">VISA</label></div>
+                                </div>
+                                <div class="pui-grid-row">
+                                    <div class="pui-grid-col-1"><input id="mastercard" name="card" type="radio" value="Mastercard" is="p-radiobutton"/></div>
+                                    <div class="pui-grid-col-11"><label for="mastercard" class="ui-widget">Mastercard</label></div>
+                                </div>
+                                <div class="pui-grid-row">
+                                    <div class="pui-grid-col-1"><input id="amex" name="card" type="radio" value="AMEX" is="p-radiobutton"/></div>
+                                    <div class="pui-grid-col-11"><label for="amex" class="ui-widget">AMEX</label></div>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset toggleable>
+                            <legend>Subscribe for</legend>
+                            <div class="pui-grid pui-grid-responsive">
+                                <div class="pui-grid-row">                            
+                                    <div class="pui-grid-col-1"><input id="newsletter" name="order" type="checkbox" value="Newsletter" is="p-checkbox"/></div>
+                                    <div class="pui-grid-col-11"><label for="newsletter" class="ui-widget">Newsletter</label></div>
+                                </div>
+                                <div class="pui-grid-row">
+                                    <div class="pui-grid-col-1"><input id="news" name="order" type="checkbox" value="News" is="p-checkbox"/></div>
+                                    <div class="pui-grid-col-11"><label for="news" class="ui-widget">News</label></div>
+                                </div>
+                                <div class="pui-grid-row">
+                                    <div class="pui-grid-col-1"><input id="promotions" name="order" type="checkbox" value="Promotions" is="p-checkbox"/></div>
+                                    <div class="pui-grid-col-11"><label for="promotions" class="ui-widget">Promotions</label></div>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <button is="p-button" icon="fa-pencil-square-o" type="submit" style="margin-top:5px;">Register</button>                    
+                    </form>    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

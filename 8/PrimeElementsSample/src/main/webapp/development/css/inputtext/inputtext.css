@@ -1,0 +1,3 @@
+.pui-inputtext{margin:0;outline:medium none;padding:4px;font-weight:normal;}
+.ui-widget-header .pui-inputtext,.ui-widget-content .pui-inputtext{font-weight:normal;}
+.pui-fluid .pui-inputtext{width:100%;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}

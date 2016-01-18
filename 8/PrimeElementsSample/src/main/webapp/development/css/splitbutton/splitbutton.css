@@ -1,0 +1,6 @@
+.pui-splitbutton{position:relative;padding-right:2em;}
+.pui-splitbutton .pui-button.pui-splitbutton-menubutton{width:32px;position:absolute;top:0;margin-left:-1px;right:0;}
+.pui-splitbutton{display:inline-block;zoom:1;}
+.pui-fluid .pui-splitbutton{width:100%;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.pui-fluid .pui-splitbutton .pui-button{width:100%;}
+.pui-fluid .pui-splitbutton .pui-button.pui-splitbutton-menubutton{width:32px;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
