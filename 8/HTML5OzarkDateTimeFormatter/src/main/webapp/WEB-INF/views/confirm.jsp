@@ -9,7 +9,8 @@
         <h5>Thank you for registering!</h5>        
     <div>
         E-mail: ${register.email}<br/>
-        Birthdate: ${register.birthdate}<br/>        
+        Birth-date: ${register.birthdate}<br/>        
+        Birth-time: ${register.birthtime}<br/>        
     </div>
 </body>
 </html>

@@ -17,14 +17,16 @@ public class RegisterController {
     private Models models;
 
     @POST
-    public Response register(@FormParam("email") String email, @FormParam("birthdate") DateParam birthdate) {
+    public Response register(@FormParam("email") String email, @FormParam("birthdate") DateParam birthdate, 
+            @FormParam("birthtime") TimeParam birthtime) {
 
         final Register register = new Register();
 
         register.setEmail(email);
-        if (birthdate != null) {
+        if ((birthdate != null) && (birthtime != null)) {
             register.setBirthdate(birthdate.getDate());
-        }
+            register.setBirthtime(birthtime.getTime());
+        }        
 
         models.put("register", register);
 

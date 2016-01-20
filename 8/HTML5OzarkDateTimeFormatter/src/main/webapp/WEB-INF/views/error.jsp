@@ -6,6 +6,6 @@
         <title>Error Page</title>
     </head>
     <body>
-        <h3>Sorry, registration failed (your birth date could not be processed!)</h3>
+        <h3>Sorry, registration failed (your birth date/time could not be processed!)</h3>
     </body>
 </html>
