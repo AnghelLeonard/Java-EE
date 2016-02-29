@@ -5,7 +5,6 @@ You can run it like this:
 
 ![](./install.png)	
 
-- Copy the /node_modules/primeng folder into app/resources folder
 - Run it under GlassFish 4.1.1 (more details [here](http://java-ee-articles.blogspot.ro/2016/01/rapid-testing-mvc-10-ozark-ri.html))
 
 You should obtain something like [this](http://java-ee-articles.blogspot.ro/2016/02/primeng-mvc-10-ozark-ri.html).
