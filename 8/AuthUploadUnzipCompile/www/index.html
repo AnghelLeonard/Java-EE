@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Applications Compiler - Sample app</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/gif" href="data:image/gif;base64,R0lGODlhEAAQAIAAAAAAAAAAACH5BAkAAAEALAAAAAAQABAAAAIgjI+py+0PEQiT1lkNpppnz4HfdoEH2W1nCJRfBMfyfBQAOw==" />	
+    </head>
+    <body>      
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="./js/ajax-cross-origin/js/jquery.ajax-cross-origin.min.js"></script>
+        <script type="text/javascript">
+
+            // Disable async and CROS  
+            jQuery.ajaxSetup({crossOrigin: true, async: false});
+			jQuery(document).ready(function($){ 
+				$('img').hide();
+			});
+
+            var jwt = "";
+
+            // Login/create a new user
+            function login() {
+
+                $.ajax({
+                    cache: false,
+                    crossDomain: true,
+                    dataType: "json",
+                    url: "http://localhost:8587/clients.json",
+                    type: "POST",
+                    data: JSON.stringify({"application": $("#applicationId").val(), "secret": $("#secretId").val()}),
+                    success: function (jsonObj, textStatus, xhr) {
+                        $("#logMsgDiv").html("User:" + jsonObj.application + "<br/>" + "Password: " + jsonObj.secret + "<br/>" + "apiKey: " + jsonObj.apiKey +
+                                "<br/>" + "id: " + jsonObj.id + "<br/>" + "Created at:" + jsonObj.createdAt + "<br/>" + "Updated at:" + jsonObj.updatedAt);
+
+                        alert("User was successfully created! Now you will get the JWT ...");
+                        getJWT(jsonObj.apiKey);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("HTTP Status: " + xhr.status);
+                        console.log("Error textStatus: " + textStatus);
+                        console.log("Error thrown: " + errorThrown);
+
+                        $("#statusMsgDiv").html("HTTP Status: " + xhr.status + "<br/> Error textStatus: " + textStatus + "<br/> Error thrown: " + errorThrown);
+                    }
+                });
+            }
+
+            // Get a GWT based on your credentials (application and secret)
+            function getJWT(apiKeyParam) {
+                $.ajax({
+                    cache: false,
+                    crossDomain: true,
+                    dataType: "json",
+                    url: "http://localhost:8587/jwts.json?apiKey=" + apiKeyParam + "&secret=" + $("#secretId").val(),
+                    type: "GET",
+                    data: {},
+                    success: function (jsonObj, textStatus, xhr) {
+
+                        var htmlContent = $("#logMsgDiv").html() + "<br/><br/> JWT: " + jsonObj;
+                        $("#logMsgDiv").html(htmlContent);
+
+                        alert("Now we have a JWT, let's see if it is valid ...");
+                        verifyJWT(jsonObj);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("HTTP Status: " + xhr.status);
+                        console.log("Error textStatus: " + textStatus);
+                        console.log("Error thrown: " + errorThrown);
+
+                        $("#statusMsgDiv").html("HTTP Status: " + xhr.status + "<br/> Error textStatus: " + textStatus + "<br/> Error thrown: " + errorThrown);
+                    }
+                });
+            }
+
+            // Check if your JWT is valid
+            function verifyJWT(jwtparam) {
+                $.ajax({
+                    cache: false,
+                    crossDomain: true,
+                    dataType: "json",
+                    url: "http://localhost:8587/jwts/" + jwtparam,
+                    type: "GET",
+                    data: {},
+                    success: function (jsonObj, textStatus, xhr) {
+					
+                        var htmlContent = $("#logMsgDiv").html() + "<br/><br/> JWT valid: " + jsonObj;
+                        $("#logMsgDiv").html(htmlContent);
+						
+						if(jsonObj == true){
+                           jwt = jwtparam;
+                           alert("The JWT is valid. Time to upload. Select a file and try to upload ...");
+						} else {
+						   alert("Sorry, the tested JWT is invalid ...");
+						}   
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("HTTP Status: " + xhr.status);
+                        console.log("Error textStatus: " + textStatus);
+                        console.log("Error thrown: " + errorThrown);
+
+                        $("#statusMsgDiv").html("HTTP Status: " + xhr.status + "<br/> Error textStatus: " + textStatus + "<br/> Error thrown: " + errorThrown);
+                    }
+                });
+            }
+
+            // Upload the source code to compile as a ZIP archive
+            function upload() {
+
+			    $('img').show();
+                var formData = new FormData(document.forms.namedItem("myForm"));
+
+                $.ajax({
+                    cache: false,
+                    crossOrigin: true,
+                    crossDomain: true,
+                    dataType: "json",
+                    context: {},
+                    url: "http://localhost:8081/upload.json",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        "Authorization": "Bearer " + jwt
+                    },
+                    data: formData,
+                    success: function (jsonObj, textStatus, xhr) {
+
+                        var htmlContent = $("#logMsgDiv").html() + "<br/><br/> Code: " + jsonObj;
+                        $("#logMsgDiv").html(htmlContent);
+
+						if(jsonObj != "Only ZIP (application/zip) are allowed") {
+                           alert("The upload is complete! Use the received code to unzip the folder ...");
+                           unzip(jsonObj);
+						} else {
+						   alert("You can upload only ZIP files");
+						}
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("HTTP Status: " + xhr.status);
+                        console.log("Error textStatus: " + textStatus);
+                        console.log("Error thrown: " + errorThrown);
+
+                        $("#statusMsgDiv").html("HTTP Status: " + xhr.status + "<br/> Error textStatus: " + textStatus + "<br/> Error thrown: " + errorThrown);
+                    }
+                });
+				$('img').hide();
+            }
+
+            // Un-zip the uploaded archive
+            function unzip(codeparam) {
+			
+			    $('img').show();
+				
+                $.ajax({
+                    cache: false,
+                    crossOrigin: true,
+                    crossDomain: true,
+                    dataType: "json",
+                    url: "http://localhost:8084/unzip/" + codeparam,
+                    type: "GET",
+                    headers: {
+                        "Authorization": "Bearer " + jwt
+                    },
+                    data: {},
+                    success: function (jsonObj, textStatus, xhr) {
+
+                        var htmlContent = $("#logMsgDiv").html() + "<br/><br/> Code: " + jsonObj;
+                        $("#logMsgDiv").html(htmlContent);
+						
+                        alert("The unzip was a total success. Ready for compile?");
+                        compile(jsonObj);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("HTTP Status: " + xhr.status);
+                        console.log("Error textStatus: " + textStatus);
+                        console.log("Error thrown: " + errorThrown);
+
+                        $("#statusMsgDiv").html("HTTP Status: " + xhr.status + "<br/> Error textStatus: " + textStatus + "<br/> Error thrown: " + errorThrown);
+                    }
+                });
+				
+				$('img').hide();
+            }
+
+            function compile(codeparam) {
+			
+			    $('img').show();
+				
+                $.ajax({
+                    cache: false,
+                    crossOrigin: true,
+                    crossDomain: true,
+                    dataType: "json",
+                    url: "http://localhost:8086/compile/" + codeparam,
+                    type: "GET",
+                    headers: {
+                        "Authorization": "Bearer " + jwt
+                    },
+                    data: {},
+                    success: function (jsonObj, textStatus, xhr) {
+
+                        var htmlContent = $("#logMsgDiv").html() + "<br/><br/> Compilation return: " + jsonObj;
+                        $("#logMsgDiv").html(htmlContent);
+
+                        alert("The compile output is listed below ...");
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("HTTP Status: " + xhr.status);
+                        console.log("Error textStatus: " + textStatus);
+                        console.log("Error thrown: " + errorThrown);
+
+                        $("#statusMsgDiv").html("HTTP Status: " + xhr.status + "<br/> Error textStatus: " + textStatus + "<br/> Error thrown: " + errorThrown);
+                    }
+                });
+				
+				$('img').hide();
+            }
+
+        </script>	  
+
+        <h3>My Java Compiler</h3>	  
+        <hr/>
+
+        <table>	  
+            <tr>
+                <td>
+                    <form>
+                        <table border="1">
+                            <tr>
+                                <td colspan="2"><h4>Login/create user (user and pass are used to generate an API Key, used further to generate a JSON Web Token (JWT)):</h4></td>
+                            </tr>
+                            <tr>		
+                                <td>
+                                    User (application):
+                                </td>
+                                <td>
+                                    <input id="applicationId" type="text" style="width:250px;"/>		  
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Password (secret):
+                                </td>
+                                <td>
+                                    <input id="secretId" type="password" style="width:250px;"/>		  
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>		
+                                <td>
+                                    <input type="button" value="Generate API Key" onclick="login();"/>
+                                </td>
+                            </tr>
+                        </table>	
+                    </form>
+                </td>
+                <!-- valign is obsolete, we should use CSS -->
+                <td valign="top">	   
+                    <!-- method="post" enctype="multipart/form-data" action="http://localhost:8081/upload.json" -->
+                    <form id="myForm" name="myForm" method="post" enctype="multipart/form-data">
+                        <table border="1">
+                            <tr>
+                                <td colspan="2"><h4>Upload:</h4></td>
+								<td>
+								  <img id="ajaxImgId" src="./img/ajax-loader.gif"/>
+								</td>
+                            </tr>
+                            <tr>
+                                <td>		 
+                                    <input id="fileId" type="file" name="fileUpload" accept="application/zip">
+                                </td> 
+                                <td></td>
+                                <td>
+                                    <input value="Upload" type="button" onclick="upload();"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>	  
+        </table>
+
+        <hr/>
+        <h4>Compiler output (including errors):</h4>
+        <h5>Output</h5> 
+        <div id="logMsgDiv"></div>	  
+
+        <hr/>
+        <h5>Status</h5>
+        <div id="statusMsgDiv"></div>	
+        <hr/>
+    </body>
+</html>

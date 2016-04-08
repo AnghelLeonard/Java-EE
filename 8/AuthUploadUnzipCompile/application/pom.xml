@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Java Applications Compiler</name>
+    <description>none</description>
+    <url>none</url>
+    <groupId>org</groupId>
+    <artifactId>My-Java-Compiler</artifactId>
+    <version>1</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>AuthenticationService</module>
+        <module>UploadService</module>
+        <module>UnzipService</module>
+        <module>CompileService</module>
+    </modules>
+</project>
