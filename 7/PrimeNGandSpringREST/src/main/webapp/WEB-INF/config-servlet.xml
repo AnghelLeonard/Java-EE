@@ -30,8 +30,8 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
             <!-- <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-                <property name="generateDdl" value="${jpa.generateDdl}" />
-                <property name="databasePlatform" value="${persistence.dialect}" />
+                <property name="generateDdl" value="place here jpa.generateDdl}" />
+                <property name="databasePlatform" value="place here persistence.dialect" />
             </bean> -->
         </property>
         <property name="jpaProperties">
