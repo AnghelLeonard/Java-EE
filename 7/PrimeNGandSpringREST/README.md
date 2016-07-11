@@ -8,6 +8,6 @@ Before running the application you should execute the below command in the **Pri
 npm install
 ```
 
-After you obtain the **/node_modules folder**, you can run the application. I've tested under Payara with database **myproducts** in MySQL 5. This is a very simple database with a single table named **products** like in figure below:
+After you obtain the **/node_modules** folder (including **primeng** folder), you can run the application. I've tested under Payara with database **myproducts** in MySQL 5. This is a very simple database with a single table named **products** like in figure below:
 
 ![alt text](https://3.bp.blogspot.com/-Cxm3WGQkh5o/V4NgH5LsidI/AAAAAAAAHGc/zttIusvbX3ImOMKPhpIzKEgP87MyUN-vQCKgB/s1600/mysql%2Bdb%2Bprimeng%2Bspring%2Bmvc%2Bhibernate%2Bjpa.png "myproducts")
