@@ -8,7 +8,6 @@ Before executing the application run the below command in the PrimeNGandSpringRE
 npm install
 ```
 
-After you obtain the /node_modules folder, you can run the application. I've tested under Payara with database 'myproducts' in MySQL 5. SQL script for creating the database:
+After you obtain the **/node_modules folder**, you can run the application. I've tested under Payara with database **myproducts** in MySQL 5. This is a very simple database with a single table named **products** like in figure below:
 
-'''
-'''
+![alt text](http://www.primefaces.org/images/primeng.png "myproducts")
