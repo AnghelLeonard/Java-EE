@@ -2,7 +2,7 @@
 
 ![alt text](https://4.bp.blogspot.com/-RlaY9ZL2icE/V4NgL5s4LnI/AAAAAAAAHGg/HKfhcL0PHVUmbJBGYBL1k7Sfrz48ki5HwCLcB/s1600/primeng%2Bspring%2Bhibernate%2Bjpa.png "App")
 
-Before running the application you should execute the below command in the PrimeNGandSpringREST\src\main\webapp folder:
+Before running the application you should execute the below command in the **PrimeNGandSpringREST\src\main\webapp** folder:
 
 ```
 npm install
