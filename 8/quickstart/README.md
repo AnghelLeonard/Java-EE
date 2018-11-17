@@ -1,3 +1,5 @@
+# Java EE 8 Quickstart app for NetBeans 8.2, Payara 5
+-----------------------------------------------------
 # Build
 mvn clean package && docker build -t com.sample/quickstart .
 
